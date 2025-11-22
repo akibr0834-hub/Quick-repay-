@@ -1,40 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quick Repay | Loan Products</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body class="bg-gray-50 text-gray-800">
-  <header class="bg-blue-600 text-white p-4 text-center text-xl font-bold shadow">💰 Quick Repay</header>
-  <main class="p-4 space-y-4">
-    <h2 class="text-lg font-semibold">Available Loan Products</h2>
-    <div class="grid gap-3">
-      <div class="flex justify-between items-center bg-white p-3 rounded shadow">
-        <span>Karta Loan</span>
-        <a href="repay.html?product=Karta%20Loan" class="bg-blue-500 text-white px-4 py-1 rounded">Repay</a>
-      </div>
-      <div class="flex justify-between items-center bg-white p-3 rounded shadow">
-        <span>Magic Cash</span>
-        <a href="repay.html?product=Magic%20Cash" class="bg-blue-500 text-white px-4 py-1 rounded">Repay</a>
-      </div>
-      <div class="flex justify-between
-items-center bg-white p-3 rounded shadow">
-        <span>Tap Money</span>
-        <a href="repay.html?product=Tap%20Money" class="bg-blue-500 text-white px-4 py-1 rounded">Repay</a>
-      </div>
-      <div class="flex justify-between items-center bg-white p-3 rounded shadow">
-        <span>Credit Guru</span>
-        <a href="repay.html?product=Credit%20Guru" class="bg-blue-500 text-white px-4 py-1 rounded">Repay</a>
+import React from "react";
+
+// Repay Page Component // Single-file React component styled with Tailwind CSS. // Default export is the page component. Replace hardcoded values with props or state as needed.
+
+export default function RepayPage() { const data = { provider: "Credit Guru", name: "Sagar K", loanAmount: "₹ 5,000", renewalDay: "7 Day", renewalFee: "₹ 1,900", repaymentAmount: "₹ 1,900", };
+
+return ( <div className="min-h-screen bg-white flex items-start justify-center py-8 px-4"> <div className="w-full max-w-md"> {/* Top header */} <div className="bg-rose-400 text-white rounded-t-lg px-6 py-4 text-center font-semibold text-lg"> Repay </div>
+
+{/* Card */}
+    <div className="border border-gray-200 rounded-b-lg shadow-sm">
+      <div className="p-6 bg-white">
+        <div className="flex items-center gap-3">
+          <div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center">
+            {/* small wallet-like svg */}
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="6" width="20" height="12" rx="2" fill="#FDEBF0" />
+              <rect x="16" y="9" width="4" height="4" rx="1" fill="#FB7185" />
+            </svg>
+          </div>
+          <div>
+            <div className="text-gray-800 font-bold text-xl">{data.provider}</div>
+          </div>
+        </div>
+
+        <div className="mt-6 border-t border-gray-100"></div>
+
+        {/* rows */}
+        <div className="mt-4 space-y-4 text-sm">
+          <Row label="Name" value={data.name} />
+          <Row label="Loan Amount" value={data.loanAmount} />
+          <Row label="Renewal Day" value={data.renewalDay} />
+          <Row label="Renewal Fee" value={data.renewalFee} />
+          <Row label="Repayment Amount" value={data.repaymentAmount} valueClassName="text-rose-500 font-semibold" />
+        </div>
+
+        {/* Repay button */}
+        <div className="mt-6">
+          <button className="w-full py-3 rounded-full bg-indigo-700 text-white font-semibold shadow-lg hover:opacity-95 transition">
+            Repay Now
+          </button>
+        </div>
+
+        {/* Tips section */}
+        <div className="mt-6">
+          <div className="font-semibold">Tips:</div>
+
+          <ul className="mt-2 space-y-2 text-sm">
+            <li className="flex items-start gap-2">
+              <span className="text-red-600 font-bold">!!!</span>
+              <span>
+                <span className="font-semibold text-red-600">One UPI</span> can only transfer money <span className="font-semibold text-red-600">ONCE</span>.
+              </span>
+            </li>
+
+            <li className="flex items-start gap-2">
+              <span className="text-red-600 font-bold">!!!</span>
+              <span>
+                <span className="font-semibold text-red-600">DO NOT CHANGE</span> the payment <span className="font-semibold text-red-600">AMOUNT & UPI</span>.
+              </span>
+            </li>
+
+            <li className="flex items-start gap-2">
+              <span className="text-red-600 font-bold">!!!</span>
+              <span>
+                <span className="font-semibold text-red-600">DO NOT</span> transfer money in the UPI friend <span className="font-semibold text-red-600">CHAT</span> window again.
+              </span>
+            </li>
+          </ul>
+
+          <div className="mt-4 text-xs text-gray-500">After successful repayment, you can immediately apply for a loan again.</div>
+        </div>
       </div>
     </div>
-    <div class="mt-6 text-sm text-gray-600">
-      <p>1️⃣ Click Repay</p>
-      <p>2️⃣ Copy any UPI</p>
-      <p>3️⃣ Pay with any app</p>
-    </div>
-  </main>
-</body>
-</html>
+  </div>
+</div>
+
+); }
+
+function Row({ label, value, valueClassName = "text-gray-800" }) { return ( <div className="flex items-center justify-between py-2 border-b border-gray-100"> <div className="text-sm text-gray-500">{label}</div> <div className={text-sm ${valueClassName}}>{value}</div> </div> ); }
